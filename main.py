@@ -21,9 +21,18 @@ MONOLOGUE = (
 
 
 def main() -> None:
+    words = MONOLOGUE.split()
+    if len(words) != 100:
+        raise SystemExit(f"monologue must be 100 words, got {len(words)}")
+    if not 1 <= len(MONOLOGUE) <= 600:
+        raise SystemExit(
+            f"entry.txt must be 1-600 characters, got {len(MONOLOGUE)}"
+        )
     os.makedirs("/output", exist_ok=True)
     with open("/output/entry.txt", "w", encoding="utf-8") as f:
         f.write(MONOLOGUE)
+    print(f"wrote /output/entry.txt: {len(words)} words, "
+          f"{len(MONOLOGUE)} characters")
 
 
 if __name__ == "__main__":
